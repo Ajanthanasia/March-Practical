@@ -1,0 +1,102 @@
+import java.util.Scanner;
+public class LeaderBoard
+{
+	public static void main(String[] args)
+	{
+		Scanner put=new Scanner(System.in);
+		int p[]=new int[11];
+		p[0]=23;
+		p[1]=12;
+		p[2]=12;
+		p[3]=46;
+		p[4]=12;
+		p[5]=28;
+		p[6]=45;
+		p[7]=102;
+		p[8]=79;
+		p[9]=70;
+		p[10]=120;
+		
+		board Players = new board();
+		Players.detail(p);
+		Players.TopScore(p);
+		System.out.println("Enter a jercy no of Player :");
+		int f = put.nextInt();
+		Players.findplayer(f,p);
+		System.out.println("Enter a Remove no of Player :");
+		int ro = put.nextInt();
+		Players.remove(ro,p);
+		System.out.println();
+		Players.sort(p);
+		
+		
+	}
+	
+}
+class board
+{
+	void detail(int[] k)
+	{
+		for(int i=0;i<k.length;i++)
+		{
+			System.out.println("Player jercy no :"+(i+1)+" score is "+k[i]);
+		}
+	}
+	void TopScore(int[] k)
+	{
+		int m=0;
+		for(int i=0;i<k.length;i++)
+		{
+			if(m<k[i])
+			{
+				m=k[i];
+			}
+		}
+		System.out.println("Max score is : "+m);
+	}
+	void findplayer(int fo,int[] k)
+	{
+		for(int i=0;i<k.length;i++)
+		{
+			if(i == (fo-1))
+			{
+				System.out.println("Player is : "+k[i]);
+			}
+		}
+	}
+	void sort(int[] k)
+	{
+		int temp;
+		for (int i = 0; i < k.length; i++) {     
+            for (int j = i+1; j < k.length; j++) {
+				 if(k[i] < k[j]) {    
+                   temp = k[i];    
+                   k[i] = k[j];    
+                   k[j] = temp; 
+				 }
+			}
+		}
+		for(int i=0;i<k.length;i++)
+		{
+			System.out.println("Player jercy no :"+(i+1)+" score is "+k[i]);
+		}
+	}
+	void remove(int r,int[] k)
+	{
+		r--;
+		int b[]=new int[10];
+		for(int i=0;i<r;i++)
+		{
+			b[i]=k[i];
+		}
+		for(int i=r;i<b.length;i++)
+		{
+			b[i]=k[i+1];
+		}
+		for(int i=0;i<b.length;i++)
+		{
+			System.out.println("Player jercy no :"+(i+1)+" score is "+b[i]);
+		}
+	}
+	
+}
